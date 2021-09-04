@@ -1,0 +1,21 @@
+.button {
+  border-radius: 4px;
+  background-color: #ffffff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.good:active {
+  color: #ffffff;
+  background-color: #0e803c;
+}
+
+.neutral:active {
+  color: #ffffff;
+  background-color: #1225ee;
+}
+
+.bad:active {
+  color: #ffffff;
+  background-color: #ee1212;
+}
