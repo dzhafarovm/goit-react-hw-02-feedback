@@ -9,9 +9,7 @@ export class Statistics extends Component {
     return (
       <>
         <h2>Statistics</h2>
-        {(this.props.good === 0) &
-        (this.props.neutral === 0) &
-        (this.props.bad === 0) ? (
+        {good === 0 && neutral === 0 && bad === 0 ? (
           <Notification mesage="No feedback given" />
         ) : (
           <div>
