@@ -1,36 +1,22 @@
-import React, { Component } from "react";
 import css from "./FeedbackOptions.module.css";
 
-export class FeedbackOptions extends Component {
-  render() {
-    const { good, neutral, bad } = this.props.options;
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  const arrBtn = Object.keys(options);
 
-    return (
-      <div>
-        <button
-          type="button"
-          className={`${css.button} ${css.good}`}
-          onClick={good}
-        >
-          Good
-        </button>
-
-        <button
-          type="button"
-          className={`${css.button} ${css.neutral}`}
-          onClick={neutral}
-        >
-          Neutral
-        </button>
-
-        <button
-          type="button"
-          className={`${css.button} ${css.bad}`}
-          onClick={bad}
-        >
-          Bad
-        </button>
-      </div>
-    );
-  }
-}
+  return (
+    <ul className={css.btnList}>
+      {arrBtn.map((btn) => (
+        <li key={btn}>
+          <button
+            className={css.button}
+            type="button"
+            name={btn}
+            onClick={onLeaveFeedback}
+          >
+            {btn}
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+};

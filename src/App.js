@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Section from "./Components/Section/Section.jsx";
+import { Section } from "./Components/Section/Section.jsx";
 import { FeedbackOptions } from "./Components/FeedbackOptions/FeedbackOptions.jsx";
 import { Statistics } from "./Components/Statistics/Statistics.jsx";
 
@@ -16,28 +16,9 @@ export class App extends Component {
     bad: 0,
   };
 
-  reviewsСounterGood = () => {
-    this.setState((prevState) => {
-      return {
-        good: (prevState.good += 1),
-      };
-    });
-  };
-
-  reviewsСounterNeutral = () => {
-    this.setState((prevState) => {
-      return {
-        neutral: (prevState.neutral += 1),
-      };
-    });
-  };
-
-  reviewsСounterBad = () => {
-    this.setState((prevState) => {
-      return {
-        bad: (prevState.bad += 1),
-      };
-    });
+  reviewsСounter = (e) => {
+    const { name } = e.target;
+    this.setState((prevState) => ({ [name]: prevState[name] + 1 }));
   };
 
   countTotalFeedback = () => {
@@ -54,11 +35,8 @@ export class App extends Component {
     return (
       <Section title="Please leave feedback">
         <FeedbackOptions
-          options={{
-            good: this.reviewsСounterGood,
-            neutral: this.reviewsСounterNeutral,
-            bad: this.reviewsСounterBad,
-          }}
+          options={this.state}
+          onLeaveFeedback={this.reviewsСounter}
         />
 
         <Statistics
